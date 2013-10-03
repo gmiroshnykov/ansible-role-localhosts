@@ -1,0 +1,10 @@
+- name: add localhosts
+  sudo: true
+  lineinfile:
+    dest=/etc/hosts
+    regexp='\s+{{ item }}$'
+    line='127.0.0.1 {{ item }}'
+    owner=root
+    group=root
+    mode=0644
+  with_items: '{{ localhosts }}'
